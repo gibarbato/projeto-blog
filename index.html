@@ -56,49 +56,49 @@
     </div>
 
 
-    <script>
-        const renderizadorTitulo = document.querySelector('#renderizador-titulo');
-        const renderizadorTexto = document.querySelector('#renderizador-texto');
-        const titulo = document.querySelector("#title");
-        const conteudo = document.querySelector("#text");
+    <script src= "script.js">
+        // const renderizadorTitulo = document.querySelector('#renderizador-titulo');
+        // const renderizadorTexto = document.querySelector('#renderizador-texto');
+        // const titulo = document.querySelector("#title");
+        // const conteudo = document.querySelector("#text");
 
 
-        const form = document.querySelector("#blog-form");
+        // const form = document.querySelector("#blog-form");
 
-        const URL = "https://jsonplaceholder.typicode.com/posts";
+        // const URL = "https://jsonplaceholder.typicode.com/posts";
 
-        form.addEventListener("submit", event => {
-            event.preventDefault();
+        // form.addEventListener("submit", event => {
+        //     event.preventDefault();
 
-            const data = {
-                title: renderizadorTitulo.value,
-                body: renderizadorTexto.value,
-                userId: 1
-            }
+        //     const data = {
+        //         title: renderizadorTitulo.value,
+        //         body: renderizadorTexto.value,
+        //         userId: 1
+        //     }
 
-            fetch(URL, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: { "Content-type": "application/json; charset=UTF-8" }
-            })
-                .then(resposta => resposta.json())
-                .then(dados => {
-                    console.log(dados);
-                    titulo.textContent=renderizadorTitulo.value;
-                    conteudo.textContent=renderizadorTexto.value;
-                });
+        //     fetch(URL, {
+        //         method: "POST",
+        //         body: JSON.stringify(data),
+        //         headers: { "Content-type": "application/json; charset=UTF-8" }
+        //     })
+        //         .then(resposta => resposta.json())
+        //         .then(dados => {
+        //             console.log(dados);
+        //             titulo.textContent=renderizadorTitulo.value;
+        //             conteudo.textContent=renderizadorTexto.value;
+        //         });
 
-            fetch(URL, {
-                method: "GET",
+        //     fetch(URL, {
+        //         method: "GET",
                 
-            })
-                .then(resposta => resposta.json())
-                .then(dados => {
-                    console.log(dados);
+        //     })
+        //         .then(resposta => resposta.json())
+        //         .then(dados => {
+        //             console.log(dados);
                     
-                });
+        //         });
 
-        })
+        // })
 
     </script>
 </body>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui;
+            margin: 0;
+            background-color: lightskyblue;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        .conteiner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .margem {
+            margin: 5px;
+        }
+
+        #msg {
+            width: 200px;
+            height: 150px;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form id="blog-form" class="conteiner">
+            <label for="renderizador-titulo" class="title">Título</label>
+            <input id="renderizador-titulo" class="margem" placeholder="Digite um título" />
+            <textarea id="renderizador-texto" class="margem" placeholder="Digite a sua mensagem"></textarea>
+            <button class="margem" alt="Enviar o post">Send</button>
+        </form>
+    </div>
+
+    <div class="conteiner">
+        <h2 id="title">Título enviado</h2>
+        <p id="text">texto mensagem....</p>
+    </div>
+
+
+    <script>
+        const renderizadorTitulo = document.querySelector('#renderizador-titulo');
+        const renderizadorTexto = document.querySelector('#renderizador-texto');
+        const titulo = document.querySelector("#title");
+        const conteudo = document.querySelector("#text");
+
+
+        const form = document.querySelector("#blog-form");
+
+        const URL = "https://jsonplaceholder.typicode.com/posts";
+
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+
+            const data = {
+                title: renderizadorTitulo.value,
+                body: renderizadorTexto.value,
+                userId: 1
+            }
+
+            fetch(URL, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: { "Content-type": "application/json; charset=UTF-8" }
+            })
+                .then(resposta => resposta.json())
+                .then(dados => {
+                    console.log(dados);
+                    titulo.textContent=renderizadorTitulo.value;
+                    conteudo.textContent=renderizadorTexto.value;
+                });
+
+            fetch(URL, {
+                method: "GET",
+                
+            })
+                .then(resposta => resposta.json())
+                .then(dados => {
+                    console.log(dados);
+                    
+                });
+
+        })
+
+    </script>
+</body>
+
+</html>
